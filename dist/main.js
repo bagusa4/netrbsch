@@ -57,7 +57,7 @@ var RDevicesList = [
                         for (_a = 0, RDevicesList_1 = RDevicesList; _a < RDevicesList_1.length; _a++) {
                             device = RDevicesList_1[_a];
                             if ((doDevice.brand == device.brand) && ((doDevice.series == device.series) || (doDevice.webmin == device.webmin))) {
-                                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).login();
+                                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(doDevice.commands);
                             }
                         }
                     }

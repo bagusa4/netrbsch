@@ -16,7 +16,7 @@ let RDevicesList: Array<Device> = [
     for(let doDevice of doDevicesList) {
         for(let device of RDevicesList) {
             if((doDevice.brand == device.brand) && ((doDevice.series == device.series) || (doDevice.webmin == device.webmin))) {
-                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).login();
+                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(doDevice.commands);
             }
         }
     }

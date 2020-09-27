@@ -7,6 +7,6 @@
         "url": "http://192.168.88.1",
         "username": "admin",
         "password": "mgerpmikrotik",
-        "commands": "login, reboot"
+        "commands": ["login", "reboot"]
     }
 ]

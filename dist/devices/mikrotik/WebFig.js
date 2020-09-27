@@ -62,6 +62,21 @@ var WebFig = /** @class */ (function (_super) {
         _this.models = ["RB941-2nD hAP lite"];
         return _this;
     }
+    WebFig.prototype.do = function (commands) {
+        for (var _i = 0, commands_1 = commands; _i < commands_1.length; _i++) {
+            var command = commands_1[_i];
+            switch (command) {
+                case "login":
+                    this.login();
+                    break;
+                case "reboot":
+                    this.reboot();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     WebFig.prototype.login = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;

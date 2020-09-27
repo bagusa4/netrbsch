@@ -11,6 +11,22 @@ export class WebFig extends Device implements IDevice {
         super();
     }
 
+    do(commands: Array<String>) {
+        for(let command of commands) {
+            switch (command) {
+                case "login":
+                    this.login();
+                    break;
+                case "reboot":
+                    this.reboot();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
     async login() {
         console.log("Puppetter");
         await 
