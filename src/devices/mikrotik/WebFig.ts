@@ -11,23 +11,24 @@ export class WebFig extends Device implements IDevice {
         super();
     }
 
-    do(commands: Array<String>) {
-        for(let command of commands) {
-            switch (command) {
-                case "login":
-                    this.login();
-                    break;
-                case "reboot":
-                    this.reboot();
-                    break;
+    do(command: string) {
+        switch (command) {
+            case "login":
+                this.login();
+                break;
+            case "logout":
+                this.logout();
+                break;
+            case "reboot":
+                this.reboot();
+                break;
 
-                default:
-                    break;
-            }
+            default:
+                throw console.error("Oops Commands was not Found !!!!");
         }
     }
 
-    async login() {
+    protected async login() {
         console.log("Puppetter");
         await 
             puppeteer({headless: false})
@@ -37,7 +38,9 @@ export class WebFig extends Device implements IDevice {
         return this;
     }
 
-    reboot() {
-        
+    protected logout() {
+    }
+
+    protected reboot() {
     }
 }

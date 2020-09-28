@@ -46,18 +46,21 @@ var RDevicesList = [
 ];
 (function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var doDevicesList, _i, doDevicesList_1, doDevice, _a, RDevicesList_1, device;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var doDevicesList, _i, doDevicesList_1, doDevice, _a, RDevicesList_1, rDevice, _b, _c, command;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0: return [4 /*yield*/, library_1.loadJSON("../devices.json")];
                 case 1:
-                    doDevicesList = _b.sent();
+                    doDevicesList = _d.sent();
                     for (_i = 0, doDevicesList_1 = doDevicesList; _i < doDevicesList_1.length; _i++) {
                         doDevice = doDevicesList_1[_i];
                         for (_a = 0, RDevicesList_1 = RDevicesList; _a < RDevicesList_1.length; _a++) {
-                            device = RDevicesList_1[_a];
-                            if ((doDevice.brand == device.brand) && ((doDevice.series == device.series) || (doDevice.webmin == device.webmin))) {
-                                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(doDevice.commands);
+                            rDevice = RDevicesList_1[_a];
+                            if ((doDevice.brand == rDevice.brand) && ((doDevice.series == rDevice.series) || (doDevice.webmin == rDevice.webmin))) {
+                                for (_b = 0, _c = doDevice.commands; _b < _c.length; _b++) {
+                                    command = _c[_b];
+                                    rDevice.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(command);
+                                }
                             }
                         }
                     }

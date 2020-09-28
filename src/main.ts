@@ -14,9 +14,11 @@ let RDevicesList: Array<Device> = [
     let doDevicesList: any = await loadJSON("../devices.json");
 
     for(let doDevice of doDevicesList) {
-        for(let device of RDevicesList) {
-            if((doDevice.brand == device.brand) && ((doDevice.series == device.series) || (doDevice.webmin == device.webmin))) {
-                device.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(doDevice.commands);
+        for(let rDevice of RDevicesList) {
+            if((doDevice.brand == rDevice.brand) && ((doDevice.series == rDevice.series) || (doDevice.webmin == rDevice.webmin))) {
+                for(let command of doDevice.commands) {
+                    rDevice.setDoDeviceInformation(doDevice.url, doDevice.username, doDevice.password).do(command);
+                }
             }
         }
     }

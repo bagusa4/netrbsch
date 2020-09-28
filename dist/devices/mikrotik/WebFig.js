@@ -62,19 +62,19 @@ var WebFig = /** @class */ (function (_super) {
         _this.models = ["RB941-2nD hAP lite"];
         return _this;
     }
-    WebFig.prototype.do = function (commands) {
-        for (var _i = 0, commands_1 = commands; _i < commands_1.length; _i++) {
-            var command = commands_1[_i];
-            switch (command) {
-                case "login":
-                    this.login();
-                    break;
-                case "reboot":
-                    this.reboot();
-                    break;
-                default:
-                    break;
-            }
+    WebFig.prototype.do = function (command) {
+        switch (command) {
+            case "login":
+                this.login();
+                break;
+            case "logout":
+                this.logout();
+                break;
+            case "reboot":
+                this.reboot();
+                break;
+            default:
+                throw console.error("Oops Commands was not Found !!!!");
         }
     };
     WebFig.prototype.login = function () {
@@ -96,6 +96,8 @@ var WebFig = /** @class */ (function (_super) {
                 }
             });
         });
+    };
+    WebFig.prototype.logout = function () {
     };
     WebFig.prototype.reboot = function () {
     };

@@ -6,7 +6,7 @@ export interface IDevice {
     url: string;
     username: string;
     password: string;
-    do(commands: Array<String>): any;
+    do(command: string): any;
 }
 
 export abstract class Device implements IDevice {
@@ -21,8 +21,9 @@ export abstract class Device implements IDevice {
     constructor() {
     }
 
-    abstract do(commands: Array<String>): any;
+    abstract do(command: string): any;
     protected abstract login(): any;
+    protected abstract logout(): any;
     protected abstract reboot(): any;
 
     getDeviceInformation(): any {
