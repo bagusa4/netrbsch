@@ -84,7 +84,7 @@ var WebFig = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         console.log("Puppetter");
-                        return [4 /*yield*/, puppeteer_1.launch({ headless: false })
+                        return [4 /*yield*/, puppeteer_1.launch({ headless: true })
                                 .then(function (browser) {
                                 browser.newPage().then(function (page) {
                                     page.goto("" + _this.url);
