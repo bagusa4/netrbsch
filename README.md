@@ -1,2 +1,0 @@
-# netrbsch
-Network Reboot Schedule
