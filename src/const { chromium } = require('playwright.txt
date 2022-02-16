@@ -1,0 +1,33 @@
+const { chromium } = require('playwright');
+
+(async () => {
+  const browser = await chromium.launch({
+    headless: false
+  });
+  const context = await browser.newContext();
+
+  // Open new page
+  const page = await context.newPage();
+
+  // Go to http://192.168.88.1/
+  await page.goto('http://192.168.88.1/');
+
+  // Click input[type="text"]
+  await page.click('input[type="text"]');
+
+  // Click input[type="password"]
+  await page.click('input[type="password"]');
+
+  // Fill input[type="password"]
+  await page.fill('input[type="password"]', 'mgerptplink');
+
+  // Click //a[normalize-space(.)='Login']
+  await page.click('//a[normalize-space(.)=\'Login\']');
+  // assert.equal(page.url(), 'http://192.168.88.1/webfig/');
+
+  // Go to http://192.168.88.1/
+  await page.goto('http://192.168.88.1/');
+
+  // Close page
+  await page.close();
+})();

@@ -1,5 +1,6 @@
 import { Device, IDevice } from "../Device";
-import { launch as puppeteer } from 'puppeteer';
+import { chromium } from 'playwright';
+import type { Browser, BrowserContext, Page } from 'playwright';
 
 export class WebFig extends Device implements IDevice {
     brand: string = "Mikrotik";
@@ -7,9 +8,17 @@ export class WebFig extends Device implements IDevice {
     webmin: string = "WebFig";
     models: String[] = ["RB941-2nD hAP lite"];
     available_commands: String[] = ["login, logout, reboot"];
+    browser_context!: BrowserContext
 
     constructor() {
         super();
+
+        this.setBrowser();
+    }
+
+    private async setBrowser() {
+        let browser: Browser = await chromium.launch({ headless: false });
+        this.browser_context = await browser.newContext()
     }
 
     do(command: string) {
@@ -31,11 +40,8 @@ export class WebFig extends Device implements IDevice {
 
     protected async login() {
         console.log("Puppetter");
-        await 
-            puppeteer({headless: false})
-            .then(browser => {browser.newPage().then(page => {
-                page.goto(`${this.url}`);
-            })});
+        let page: Page = await this.browser_context.newPage();
+        await page.goto(`${this.url}`);
     }
 
     protected logout() {
